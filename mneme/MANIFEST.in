@@ -1,0 +1,6 @@
+include mneme/static/*
+include mneme/templates/*.html
+include mneme/templates/mnemes/*.html
+include mneme/users.txt
+include mneme/credentials.txt
+include README.md

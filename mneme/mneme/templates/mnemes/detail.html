@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block js_marked %}<script src="{{ url_for('static', filename='marked.js') }}"></script>{% endblock %}
+{% block js_header %}mneme = {{ mneme.body|safe }};{% endblock %}
+
+{% block page_header %}
+    <div class="page-header">
+    <h2 id="title">{{ mneme.title }}</h2>
+    <p>
+    <form id="mneme-form" action="{{ url_for('mnemes.list') }}" method="POST">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}" />
+        <input type="hidden" name="mnemetitle" value="{{ mneme.title }}" />
+        <input type="hidden" name="mnemebody" value="" />
+        <a href="#" onclick="saveMneme();">Save Mneme</a><br />
+        <a href="#" onclick="addTopNode();">Add Top Node</a>
+    </form>
+    </p>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div id="tree"></div>
+    <div id="container">
+        <div id="nav"></div>
+        <div id="content"></div>
+    </div>
+{% endblock %}

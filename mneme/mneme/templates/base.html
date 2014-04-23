@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mneme</title>
+      <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Vollkorn">
+      <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Slab">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
+      <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+      {% block js_marked %}{% endblock %}
+      <script type="text/javascript" src="{{ url_for('static', filename='nodes.js') }}"></script>
+      {% block js_nodes  %}{% endblock %}
+      <script type="text/javascript">{% block js_header %}{% endblock %}</script>
+  </head>
+
+  <body>
+    <div id="top-container">
+    {%- block topbar -%}
+        {% if message %}
+          {% block flash_message %}{% endblock %}
+        {% endif %}
+        <div id="topbar">
+              <h2>
+                  <a href="/" id="logo"><img src="{{ url_for('static', filename='logo.svg') }}" /></a><br /> 
+                  <small>A note-taking format and web viewer</small>
+              </h2>
+        </div>
+    {%- endblock -%}
+
+    <div id="base-container">
+      <div id="base-content">
+        {% block page_header %}{% endblock %}
+        {% block content %}{% endblock %}
+
+      </div>
+    </div>
+
+    </div>
+
+    {% block js_footer %}{% endblock %}
+
+    <div id="copyright">
+        <small><b>&copy; 2014 by Risto Stevcev</b></small>
+    </div>
+  </body>
+</html>

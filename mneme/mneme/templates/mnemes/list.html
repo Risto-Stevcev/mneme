@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% if message %}
+    {% block flash_message %}<div id="flash">{{ message }}</div>{% endblock %}
+{% endif %}
+
+{% block content %}
+    {% for mneme in mnemes %}
+        <h2>
+            <a href="{{ url_for('mnemes.detail', title=mneme.title) }}">{{ mneme.title }}</a> 
+            [<a href="#" onclick="deleteMneme('{{ mneme.title }}');">&#8211;</a>]
+        </h2>
+        {% if mneme.body %}
+            <p><code>{{ mneme.body|truncate(255) }}</code></p>
+        {% endif %}
+        <small>
+            <b>Created at {{ mneme.created_at.strftime('%H:%M %Y-%m-%d') }}.</b>
+        </small>
+        <hr>
+    {% endfor %}
+    <p>Create a new Mneme</p>
+    <p>
+    <form id="mneme-form" action="{{ url_for('mnemes.list') }}" method="POST">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}" />
+        <input type="text" name="mnemetitle" value="Mneme title" />
+        <input type="hidden" name="mnemebody" value="{}" />
+        <input type="hidden" name="mnemedelete" value="" />
+        <input type="submit" value="Create Mneme" />
+    </form>
+    </p>
+{% endblock %}
