@@ -8,7 +8,7 @@ The viewer creates a tree of *topics* from the *mneme* file, and the bottom-most
 
 Mneme is named after **Mneme**, the Muse of Memory. The tree-like structure of the file format makes it easy to divide up concepts into subconcepts as small as is necessary. The markdown format of the text makes it easy to quickly add formatting like bold, italics, code, or lists. The powerful combination of a JSON tree with markdown text makes it easy to maintain, organize and manipulate all of your notes!
 
-View on PyPI: https://pypi.python.org/pypi/mneme/0.1 
+View on PyPI: https://pypi.python.org/pypi/mneme/ 
 
 Here is an animated demo of how the web app looks:
 
