@@ -19,14 +19,7 @@ function deleteMneme(mnemetitle) {
 
 var edited = false;
 
-$(window).keypress(function(event) {
-    if (!(event.which == 115 && event.ctrlKey) && !(event.which == 19)) return true;
-    if ($("#save-node").length) {
-        $("#save-node").click();
-    }
-    event.preventDefault();
-    return false;
-});
+
 
 function deleteNode (path) {
     var confirm_delete=confirm("Are you sure you want to delete this node?");
@@ -83,10 +76,17 @@ function displayObject (path) {
     }
     $("#nav").html("");
     $("#nav").append($("<ul id=\"navlist\">"+
-                       "<li><a href=\"#\" onclick=\"displayEdit('"+original_path+"')\">Edit</a></li>"+ 
+                       "<li><a href=\"#\" id=\"edit-button\" onclick=\"displayEdit('"+original_path+"')\">Edit</a></li>"+ 
                        "</ul>"));
     md_html = marked(parent[path[path.length-1]]);
     $("#content").html(md_html);
+}
+
+function getSelection(textarea) {
+    var len = textarea.value.length;
+    var start = textarea.selectionStart;
+    var end = textarea.selectionEnd;
+    return textarea.value.substring(start, end); 
 }
 
 function displayEdit (path) {
@@ -101,17 +101,20 @@ function displayEdit (path) {
     
     $("#nav").html("");
     $("#nav").append($("<ul id=\"navlist\">"+
-                       "<li><a href=\"#\" onclick=\"displayObject('"+original_path+"')\">View</a></li>"+
+                       "<li><a href=\"#\" id=\"view-button\" onclick=\"displayObject('"+original_path+"')\">View</a></li>"+
                        "<li><a href=\"#\" id=\"save-node\" onclick=\"saveNode('"+original_path+"')\">Save</a></li>"+
                        "</ul>"));
     md_html = parent[path[path.length-1]];
     $("#content").html("<textarea rows=\"12\" cols=\"80\" id=\"edit-node\">" + 
                        md_html + "</textarea>");
 
-    $("#edit-node").keypress(function() {
-        if (!edited) {
-            edited = true;
-            $("#save-node").html("[Save]");
+    $("#edit-node").keydown(function (event) {
+        if ((event.keyCode != 16 && event.keyCode != 17) && 
+            (event.keyCode < 37 || event.keyCode > 40)) {
+            if (!edited) {
+                edited = true;
+                $("#save-node").html("[Save]");
+            }
         }
     });
 }
@@ -252,6 +255,53 @@ function adjustIconSize () {
                       'height': image.naturalHeight * height_weight});
         });
 }
+
+$(window).keypress(function(event) {
+    if (event.which == 115 && event.ctrlKey) {
+        if ($("#save-node").length) {
+            $("#save-node").click();
+        }
+        event.preventDefault();
+        return false;
+    }
+    else if (event.keyCode == 37 && event.ctrlKey) {
+        $("#view-button").click();
+        $("#edit-button").focus();
+    }
+    else if (event.keyCode == 39 && event.ctrlKey) {
+        $("#edit-button").click();
+        $("#edit-node").focus();
+    }
+});
+
+$(document).keydown(function(event) {
+    if (event.keyCode == 9)
+        event.preventDefault();
+});
+
+$(document).keyup(function(event) {
+    if (event.keyCode == 9 && event.shiftKey) {
+        var selectedarea = getSelection($("#edit-node")[0]);
+        var updatedarea = selectedarea.replace(/^    /, '').replace(/\n    /g, '\n');
+        
+        var value = $("#edit-node").val();
+        $("#edit-node").val( $("#edit-node").val().replace(selectedarea, updatedarea) );
+
+        edited = true;
+        $("#save-node").html("[Save]");
+    }
+    else if (event.keyCode == 9) {
+        var selectedarea = getSelection($("#edit-node")[0]);
+        var updatedarea = "    " + selectedarea.replace(/\n/g, '\n    ');
+        
+        var value = $("#edit-node").val();
+        $("#edit-node").val( $("#edit-node").val().replace(selectedarea, updatedarea) );
+
+        edited = true;
+        $("#save-node").html("[Save]");
+    }
+});
+
 
 $(document).ready(function () {
     $('#title').html(mneme.title);
