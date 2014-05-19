@@ -51,6 +51,12 @@ Here is an animated demo of how the web app looks:
    The interface is self-explanatory. You can use ``CTRL-S`` when viewing/editing a particular *mneme* file to quickly save client-side. The file isn't saved on the server-side until you click ``Save Mneme``, which will redirect you to the main page with all of the *mnemes* listed.
 
 
+### Shortcuts
+
+* *Tab* in the editing window will indent the selected text by 4 spaces (*for multi-line code*).  
+* *Shift-tab* in the editing window will un-indent the selected text by 4 spaces (*for multi-line code*).  
+* *Ctrl-left* when viewing a particular mneme file will go into *View mode*.  
+* *Ctrl-right* when viewing a particular mneme file will go into *Edit mode*.  
 
 
 ### Exporting

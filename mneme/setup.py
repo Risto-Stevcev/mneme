@@ -3,12 +3,12 @@ from setuptools import setup, find_packages
 
 setup(
     name='mneme',
-    version='0.1',
+    version='0.2',
     license='BSD',
     author='Risto Stevcev',
     author_email='risto1@gmail.com',
     url='https://github.com/Risto-Stevcev/flask-mneme',
-    description="A new and elegant note-taking format with a web viewer/editor.",
+    description="A powerful note-taking format with a web viewer/editor.",
     long_description=open("README.md","r").read(),
     packages=find_packages(),
     install_requires=['Flask==0.10.1', 
