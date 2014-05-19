@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='mneme',
-    version='0.2',
+    version='0.201',
     license='BSD',
     author='Risto Stevcev',
     author_email='risto1@gmail.com',

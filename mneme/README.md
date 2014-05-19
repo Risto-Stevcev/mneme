@@ -55,8 +55,8 @@ Here is an animated demo of how the web app looks:
 
 * *Tab* in the editing window will indent the selected text by 4 spaces (*for multi-line code*).  
 * *Shift-tab* in the editing window will un-indent the selected text by 4 spaces (*for multi-line code*).  
-* *Ctrl-left* when viewing a particular mneme file will go into *View mode*.  
-* *Ctrl-right* when viewing a particular mneme file will go into *Edit mode*.  
+* *Ctrl-Alt-PgUp* when viewing a particular mneme file will go into *View mode*.  
+* *Ctrl-Alt-PgDown* when viewing a particular mneme file will go into *Edit mode*.  
 
 
 ### Exporting

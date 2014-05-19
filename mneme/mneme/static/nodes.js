@@ -264,11 +264,11 @@ $(window).keypress(function(event) {
         event.preventDefault();
         return false;
     }
-    else if (event.keyCode == 37 && event.ctrlKey) {
+    else if (event.keyCode == 33 && event.ctrlKey && event.altKey) {
         $("#view-button").click();
         $("#edit-button").focus();
     }
-    else if (event.keyCode == 39 && event.ctrlKey) {
+    else if (event.keyCode == 34 && event.ctrlKey && event.altKey) {
         $("#edit-button").click();
         $("#edit-node").focus();
     }
