@@ -17,7 +17,7 @@ setup(
                       'Jinja2==2.7.2', 
                       'MarkupSafe==0.21', 
                       'WTForms==1.0.5', 
-                      'Werkzeug==0.9.4', 
+                      'Werkzeug==0.15.3', 
                       'flask-mongoengine==0.7.0', 
                       'gunicorn==18.0', 
                       'itsdangerous==0.24', 
