@@ -19,7 +19,7 @@ setup(
                       'WTForms==1.0.5', 
                       'Werkzeug==0.9.4', 
                       'flask-mongoengine==0.7.0', 
-                      'gunicorn==18.0', 
+                      'gunicorn==19.5.0', 
                       'itsdangerous==0.24', 
                       'mongoengine==0.8.7', 
                       'pymongo==2.7', 
