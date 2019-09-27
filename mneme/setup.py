@@ -11,7 +11,7 @@ setup(
     description="A powerful note-taking format with a web viewer/editor.",
     long_description=open("README.md","r").read(),
     packages=find_packages(),
-    install_requires=['Flask==0.10.1', 
+    install_requires=['Flask==1.0', 
                       'Flask-Script==0.6.7', 
                       'Flask-WTF==0.9.5', 
                       'Jinja2==2.7.2', 
